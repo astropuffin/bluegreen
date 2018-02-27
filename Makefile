@@ -20,7 +20,8 @@ tag:
 	docker tag $(IMAGE_NAME):$(GIT_HASH) $(IMAGE_NAME):${GIT_BRANCH}
 
 push: tag
-	@# no push
+	docker push $(IMAGE_NAME):$(GIT_HASH)
+	docker push $(IMAGE_NAME):${GIT_BRANCH}
 
 run:
 	docker run --rm -it -e "COLOR=blue" -p 8080:8080 $(IMAGE_NAME):${GIT_BRANCH}
